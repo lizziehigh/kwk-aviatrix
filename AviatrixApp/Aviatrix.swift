@@ -13,6 +13,11 @@ class Aviatrix {
     
     var running = false
     var author = ""
+    var distanceTraveled = 0 //currently an int, must change to double in line 37 or assign as double to begin with
+    var maxFuel = 5000.0
+    var fuelLevel = 5000.0
+    var milesPerGallon = 0.4
+    var fuelCost = 0.0
     
     init(authorName : String) {
         author = authorName
@@ -23,11 +28,17 @@ class Aviatrix {
         return running
     }
     
-    func refuel() {
-        
+    func refuel() -> Double {
+        let refuelAmount = maxFuel - fuelLevel
+        fuelLevel = 5000.0
+        return refuelAmount
+        fuelCost = refuelAmount * data.fuelPrices[location]!
     }
     
     func flyTo(destination : String) {
+        
+        distanceTraveled += distanceTo(home: location, target: destination)
+        fuelLevel -= Double(distanceTraveled)*milesPerGallon
         location = destination
     }
     
