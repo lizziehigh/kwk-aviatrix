@@ -28,14 +28,21 @@ class Aviatrix {
     }
     
     func flyTo(destination : String) {
-        
+        location = destination
     }
     
-    func distanceTo(target : String) {
+    // PROBLEM AREA: never actually defined a data variable as the tutorial suggests, but can do so here:
+    var data = AviatrixData()
+    // also not told about return value but they can figure that out
     
+    // STEP 7: NEW VARIABLE LOCATION
+    var location = "St. Louis"
+    func distanceTo(home: String, target: String) -> Int {
+        // STEP 6: ADD KNOWN DISTANCE
+        return data.knownDistances[home]![target]!
     }
     
     func knownDestinations() -> [String] {
-       return ["St. Louis"]
+       return ["St. Louis", "Phoenix", "Denver", "SLC"]
     }
 }
